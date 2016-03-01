@@ -56,7 +56,8 @@ namespace Grader
 
                 GradeStatistics stats = new GradeStatistics();
 
-                stats = PROG.ComputeStatistics(grades);
+                GradeBook book = new GradeBook();
+                stats = book.ComputeStatistics(grades);
 
                 Console.WriteLine(stats.AverageGrade);
                 Console.WriteLine(stats.LowestGrade);
@@ -113,33 +114,6 @@ namespace Grader
             return sum/gs.Count;
         }
 
-        public GradeStatistics ComputeStatistics(List<float> gs)
-        {
-            GradeStatistics stats = new GradeStatistics();
-
-            stats.HigestGrade = 0;
-            stats.LowestGrade = float.MaxValue;
-            stats.AverageGrade = 0;
-            float sum = 0;
-            foreach(float g in gs)
-            {
-
-                if(g > stats.HigestGrade)
-                {
-                    stats.HigestGrade = g;
-                }
-
-                if(g < stats.LowestGrade)
-                {
-                    stats.LowestGrade = g;
-                }
-
-                sum = sum + g;
-            }
-
-            stats.AverageGrade = sum / gs.Count;
-            return stats;
-        } 
     }
 
         
